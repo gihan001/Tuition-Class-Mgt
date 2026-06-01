@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Payments - Smart Tuition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/forms.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <aside class="sidebar">
+            <h2>Smart Tuition</h2>
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="students.html">Students</a></li>
+                <li><a href="teachers.html">Teachers</a></li>
+                <li><a href="classes.html">Classes</a></li>
+                <li><a href="payments.html" class="active">Payments</a></li>
+                <li><a href="../index.html" class="logout-btn">Logout</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <button class="toggle-btn" onclick="toggleSidebar(event)">☰ Menu</button>
+                <h1>Manage Payments</h1>
+                <p>Track student fee payments and generate receipts.</p>
+            </header>
+
+            <section class="table-container">
+                <div class="table-header">
+                    <h2>Payment Records</h2>
+                    <button class="primary-button" onclick="openModal()">Add Payment</button>
+                </div>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Receipt No.</th>
+                            <th>Student Name</th>
+                            <th>Class</th>
+                            <th>Amount (Rs.)</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>REC-1001</td>
+                            <td>Kamal Perera</td>
+                            <td>Mathematics - Grade 10</td>
+                            <td>2500.00</td>
+                            <td><span class="status-badge live">Paid</span></td>
+                        </tr>
+                        <tr>
+                            <td>REC-1002</td>
+                            <td>Nimali Fernando</td>
+                            <td>Science - Grade 11</td>
+                            <td>3000.00</td>
+                            <td><span class="status-badge upcoming">Pending</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <div id="addModal" class="modal"> 
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal()">&times;</span>
+                    
+                    <h2>Add New Payment</h2>
+                    
+                    <form>
+                        <div class="input-group">
+                            <label>Student ID or Name</label>
+                            <input type="text" placeholder="e.g. STU-001">
+                        </div>
+                        <div class="input-group">
+                            <label>Select Class</label>
+                            <select style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-family: 'Poppins', sans-serif;">
+                                <option>Mathematics - Grade 10</option>
+                                <option>Science - Grade 11</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Amount (Rs.)</label>
+                            <input type="number" placeholder="e.g. 2500">
+                        </div>
+                        <button type="button" class="primary-button submit-btn">Save Payment</button>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="../assets/js/dashboard.js"></script>
+</body>
+</html>

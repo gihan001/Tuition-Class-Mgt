@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard - Smart Tuition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <aside class="sidebar" style="background-color: #0F172A;"> <h2>Smart Teacher</h2>
+            <ul>
+                <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="students.html">My Students</a></li>
+                <li><a href="materials.html">Upload Materials</a></li>
+                <li><a href="classes.html">Assigned Classes</a></li>
+                <li><a href="../index.html" class="logout-btn">Logout</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <button class="toggle-btn" onclick="toggleSidebar(event)">☰ Menu</button>
+                <h1>Welcome, Teacher!</h1>
+                <p>Teaching Overview</p>
+            </header>
+
+            <div class="cards-container">
+                <div class="card"> <h3>Total Classes</h3>
+                    <h2>6</h2>
+                </div>
+                <div class="card"> <h3>Total Students</h3>
+                    <h2>85</h2>
+                </div>
+                <div class="card"> <h3>Uploaded Materials</h3>
+                    <h2>14</h2>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script src="../assets/js/dashboard.js"></script>
+</body>
+</html>
