@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assigned Classes - Smart Tuition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <aside class="sidebar" style="background-color: #0F172A;">
+            <h2>Smart Teacher</h2>
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="students.html">My Students</a></li>
+                <li><a href="materials.html">Upload Materials</a></li>
+                <li><a href="classes.html" class="active">Assigned Classes</a></li>
+                <li><a href="../index.html" class="logout-btn">Logout</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <button class="toggle-btn" onclick="toggleSidebar(event)">☰ Menu</button>
+                <h1>Assigned Classes</h1>
+                <p>Manage and view your teaching schedule.</p>
+            </header>
+
+            <section class="table-container">
+                <div class="table-header">
+                    <h2>My Class Schedule</h2>
+                </div>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Class ID</th>
+                            <th>Subject & Grade</th>
+                            <th>Day & Time</th>
+                            <th>Total Students</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CLS-001</td>
+                            <td><strong>Mathematics - Grade 10</strong></td>
+                            <td>Monday, 04:00 PM</td>
+                            <td>45</td>
+                            <td><span class="status-badge live">Live Now</span></td>
+                        </tr>
+                        <tr>
+                            <td>CLS-003</td>
+                            <td><strong>Mathematics - Grade 11</strong></td>
+                            <td>Thursday, 03:30 PM</td>
+                            <td>38</td>
+                            <td><span class="status-badge upcoming">Upcoming</span></td>
+                        </tr>
+                        <tr>
+                            <td>CLS-005</td>
+                            <td><strong>Revision - O/L</strong></td>
+                            <td>Saturday, 08:00 AM</td>
+                            <td>60</td>
+                            <td><span class="status-badge upcoming">Upcoming</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="../assets/js/dashboard.js"></script>
+</body>
+</html>
