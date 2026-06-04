@@ -1,0 +1,85 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    flex:1;
+}
+
+.login-form {
+    background-color: #FFFFFF;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: left;
+}
+
+.login-form h2 {
+    margin-bottom: 20px;
+    color: #2563EB;
+    text-align: center;
+}
+
+input-group label{
+    display: block;
+    margin-bottom: 5px;
+    color: #1F2937;
+    font-weight: bold;  
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Dropdown (Select) සඳහා */
+.input-group select {
+    width: 100%; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    font-family: 'Poppins', sans-serif;
+}
+
+/* දිගු පණිවිඩ ලියන කොටු (Textarea) සඳහා */
+.input-group textarea {
+    width: 100%; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    font-family: 'Poppins', sans-serif;
+    min-height: 100px; 
+    resize: vertical;
+}
+
+.login-form .primary-button {
+    width: 100%;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer; /*show the hand gesture when hovering over the button*/
+}
+
+.submit-btn {
+    width: 100%;
+    margin-top: 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.forgot-password {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #2563EB;
+    font-size: 0.9rem;
+}
+
+.forgot-password:hover {
+    text-decoration: underline; /* Draw an underline when hovering over the "Forgot Password?" link */
+}
