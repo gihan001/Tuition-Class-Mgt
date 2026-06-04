@@ -1,22 +1,20 @@
 function validateLogin(event){
-    event.preventDefault(); // Prevent form submission
-
+    // Only prevent submission when validation fails
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
 
-if (email === "") {
-    alert("Email is required.");
-    return false;
-} 
+    if (email === "") {
+        alert("Email is required.");
+        event.preventDefault();
+        return false;
+    }
 
-if (password === "") {
-    alert("Password is required.");
-    return false;
-}
+    if (password === "") {
+        alert("Password is required.");
+        event.preventDefault();
+        return false;
+    }
 
-alert("Login successful!");
-
-//window.location.href = "admin/dashboard.php";
-
-return true;
+    // validation passed — allow the form to submit
+    return true;
 }

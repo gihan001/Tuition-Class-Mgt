@@ -17,7 +17,12 @@ if (isset($_POST['login_btn'])) {
         
         // ඇතුළත් කළ Password එක සහ Database එකේ ඇති Hash කළ Password එක සැසඳීම
         if (password_verify($password, $user['password'])) {
-            
+            // Ensure logs directory exists (non-visual)
+            $logDir = __DIR__ . '/../logs';
+            if (!is_dir($logDir)) { @mkdir($logDir, 0755, true); }
+            $msg = date('c') . " LOGIN_SUCCESS: email={$email} id={$user['id']} role={$user['role']}\n";
+            @file_put_contents($logDir . '/login.log', $msg, FILE_APPEND);
+
             // Session එක තුළ පරිශීලකයාගේ විස්තර තබා ගැනීම
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_name'] = $user['full_name'];
@@ -34,9 +39,19 @@ if (isset($_POST['login_btn'])) {
             exit(); // කේතය ක්‍රියාත්මක වීම මෙතනින් නතර කිරීම
             
         } else {
+            // Log invalid password attempts (non-visual)
+            $logDir = __DIR__ . '/../logs';
+            if (!is_dir($logDir)) { @mkdir($logDir, 0755, true); }
+            $msg = date('c') . " LOGIN_FAIL: email={$email} reason=invalid_password\n";
+            @file_put_contents($logDir . '/login.log', $msg, FILE_APPEND);
             echo "<script>alert('Invalid Password! Please try again.');</script>";
         }
     } else {
+        // Log missing user lookup
+        $logDir = __DIR__ . '/../logs';
+        if (!is_dir($logDir)) { @mkdir($logDir, 0755, true); }
+        $msg = date('c') . " LOGIN_FAIL: email={$email} reason=no_user\n";
+        @file_put_contents($logDir . '/login.log', $msg, FILE_APPEND);
         echo "<script>alert('No user found with this email!');</script>";
     }
 }
