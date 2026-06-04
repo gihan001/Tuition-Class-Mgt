@@ -68,12 +68,9 @@ if (isset($_POST['register_btn'])) {
                 <label>Email Address</label>
                 <input type="email" name="email" placeholder="Enter your email" required>
             </div>
-            <div class="input-group password-group">
-                <label for="reg_password">Password</label>
-                <div class="password-wrap">
-                    <input type="password" id="reg_password" name="password" placeholder="Create a password" required>
-                    <button type="button" class="toggle-password" data-target="reg_password" aria-label="Show password">👁️</button>
-                </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Create a password" required>
             </div>
             <div class="input-group">
                 <label>Register As</label>

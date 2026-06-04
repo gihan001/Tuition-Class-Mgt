@@ -83,20 +83,3 @@ input-group label{
 .forgot-password:hover {
     text-decoration: underline; /* Draw an underline when hovering over the "Forgot Password?" link */
 }
-
-/* Password toggle styling */
-.password-wrap {
-    display: flex;
-    align-items: center;
-}
-.password-wrap input {
-    flex: 1;
-}
-.toggle-password {
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin-left: 8px;
-    font-size: 1.1rem;
-    line-height: 1;
-}

@@ -75,12 +75,9 @@ if (isset($_POST['login_btn'])) {
                 <input type="email" id="email" name="email" placeholder="Enter your email" required>
             </div>
 
-            <div class="input-group password-group">
+            <div class="input-group">
                 <label for="password">Password</label>
-                <div class="password-wrap">
-                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
-                    <button type="button" class="toggle-password" data-target="password" aria-label="Show password">👁️</button>
-                </div>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
             </div>
 
             <button type="submit" name="login_btn" class="primary-button">Login</button>
