@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
+    header("Location: ../login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,13 +25,13 @@
         <aside class="sidebar">
             <h2>Smart Tuition</h2>
             <ul>
-                <li><a href="dashboard.html" class="active">Dashboard</a></li>
-                <li><a href="students.html">Students</a></li>
-                <li><a href="teachers.html">Teachers</a></li>
-                <li><a href="classes.html">Classes</a></li>
-                <li><a href="payments.html">Payments</a></li>
-                <li><a href="notices.html">Notices</a></li>
-                <li><a href="../index.html" class="logout-btn">Logout</a></li>
+                <li><a href="dashboard.php" class="active">Dashboard</a></li>
+                <li><a href="students.php">Students</a></li>
+                <li><a href="teachers.php">Teachers</a></li>
+                <li><a href="classes.php">Classes</a></li>
+                <li><a href="payments.php">Payments</a></li>
+                <li><a href="notices.php">Notices</a></li>
+                <li><a href="../index.php" class="logout-btn">Logout</a></li>
             </ul>
         </aside>
 

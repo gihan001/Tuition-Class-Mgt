@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
+    header("Location: ../login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,11 +25,11 @@
         <aside class="sidebar">
             <h2>Smart Tuition</h2>
             <ul>
-                <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="students.html">Students</a></li>
-                <li><a href="teachers.html">Teachers</a></li>
-                <li><a href="classes.html" class="active">Classes</a></li>
-                <li><a href="../index.html" class="logout-btn">Logout</a></li>
+                <li><a href="dashboard.php">Dashboard</a></li>
+                <li><a href="students.php">Students</a></li>
+                <li><a href="teachers.php">Teachers</a></li>
+                <li><a href="classes.php" class="active">Classes</a></li>
+                <li><a href="../index.php" class="logout-btn">Logout</a></li>
             </ul>
         </aside>
 
@@ -79,27 +87,27 @@
                     
                     <h2>Add New Class</h2>
                     
-                    <form>
+                    <form action="classes.php" method="POST">
                         <div class="input-group">
                             <label>Subject</label>
-                            <input type="text" placeholder="e.g. Mathematics">
+                            <input type="text" name="subject" placeholder="e.g. Mathematics">
                         </div>
                         <div class="input-group">
                             <label>Grade/Level</label>
-                            <input type="text" placeholder="e.g. Grade 10">
+                            <input type="text" name="level" placeholder="e.g. Grade 10">
                         </div>
                         <div class="input-group">
                             <label>Assign Teacher</label>
-                            <select style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-family: 'Poppins', sans-serif;">
+                            <select name="teacher" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-family: 'Poppins', sans-serif;">
                                 <option>Mr. Sunimal Silva</option>
                                 <option>Mrs. Priyanthi Perera</option>
                             </select>
                         </div>
                         <div class="input-group">
                             <label>Class Day & Time</label>
-                            <input type="text" placeholder="e.g. Monday 04:00 PM">
+                            <input type="text" name="schedule" placeholder="e.g. Monday 04:00 PM">
                         </div>
-                        <button type="button" class="primary-button submit-btn">Save Class</button>
+                        <button type="submit" class="primary-button submit-btn">Save Class</button>
                     </form>
                 </div>
             </div>

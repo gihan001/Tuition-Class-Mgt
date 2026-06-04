@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
+    header("Location: ../login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,11 +25,11 @@
         <aside class="sidebar">
             <h2>Smart Tuition</h2>
             <ul>
-                <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="students.html">Students</a></li>
-                <li><a href="teachers.html" class="active">Teachers</a></li>
-                <li><a href="classes.html">Classes</a></li>
-                <li><a href="../index.html" class="logout-btn">Logout</a></li>
+                <li><a href="dashboard.php">Dashboard</a></li>
+                <li><a href="students.php">Students</a></li>
+                <li><a href="teachers.php" class="active">Teachers</a></li>
+                <li><a href="classes.php">Classes</a></li>
+                <li><a href="../index.php" class="logout-btn">Logout</a></li>
             </ul>
         </aside>
 
@@ -29,7 +37,7 @@
             <header>
                 <button class="toggle-btn" onclick="toggleSidebar(event)">☰ Menu</button>
                 <h1>Manage Teachers</h1>
-                <p>View, add, and manage teaching staff.</p>
+                <p>View and manage teacher accounts.</p>
             </header>
 
             <section class="table-container">
@@ -43,27 +51,17 @@
                         <tr>
                             <th>Teacher ID</th>
                             <th>Name</th>
-                            <th>Subject</th>
-                            <th>Contact No.</th>
+                            <th>Email</th>
+                            <th>Subjects</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>TCH-001</td>
+                            <td>TEA-001</td>
                             <td>Mr. Sunimal Silva</td>
+                            <td>sunimal@example.com</td>
                             <td>Mathematics</td>
-                            <td>071-2345678</td>
-                            <td>
-                                <button class="action-btn edit-btn">Edit</button>
-                                <button class="action-btn delete-btn">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>TCH-002</td>
-                            <td>Mrs. Priyanthi Perera</td>
-                            <td>Science</td>
-                            <td>077-9876543</td>
                             <td>
                                 <button class="action-btn edit-btn">Edit</button>
                                 <button class="action-btn delete-btn">Delete</button>
@@ -73,30 +71,26 @@
                 </table>
             </section>
 
-            <div id="addModal" class="modal">
+            <div id="addModal" class="modal"> 
                 <div class="modal-content">
                     <span class="close-btn" onclick="closeModal()">&times;</span>
                     
                     <h2>Add New Teacher</h2>
                     
-                    <form>
+                    <form action="teachers.php" method="POST">
                         <div class="input-group">
                             <label>Full Name</label>
-                            <input type="text" placeholder="Enter teacher's name">
+                            <input type="text" name="full_name" placeholder="Enter full name">
                         </div>
                         <div class="input-group">
-                            <label>Subject specialisation</label>
-                            <input type="text" placeholder="e.g. Science, English">
+                            <label>Email</label>
+                            <input type="email" name="email" placeholder="Enter email">
                         </div>
                         <div class="input-group">
-                            <label>Email Address</label>
-                            <input type="email" placeholder="Enter email">
+                            <label>Subjects</label>
+                            <input type="text" name="subjects" placeholder="e.g. Mathematics, Physics">
                         </div>
-                        <div class="input-group">
-                            <label>Contact Number</label>
-                            <input type="text" placeholder="Enter phone number">
-                        </div>
-                        <button type="button" class="primary-button submit-btn">Save Teacher</button>
+                        <button type="submit" class="primary-button submit-btn">Save Teacher</button>
                     </form>
                 </div>
             </div>

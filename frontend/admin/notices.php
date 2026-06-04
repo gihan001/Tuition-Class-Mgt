@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
+    header("Location: ../login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,13 +25,13 @@
         <aside class="sidebar">
             <h2>Smart Tuition</h2>
             <ul>
-                <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="students.html">Students</a></li>
-                <li><a href="teachers.html">Teachers</a></li>
-                <li><a href="classes.html">Classes</a></li>
-                <li><a href="payments.html">Payments</a></li>
-                <li><a href="notices.html" class="active">Notices</a></li>
-                <li><a href="../index.html" class="logout-btn">Logout</a></li>
+                <li><a href="dashboard.php">Dashboard</a></li>
+                <li><a href="students.php">Students</a></li>
+                <li><a href="teachers.php">Teachers</a></li>
+                <li><a href="classes.php">Classes</a></li>
+                <li><a href="payments.php">Payments</a></li>
+                <li><a href="notices.php" class="active">Notices</a></li>
+                <li><a href="../index.php" class="logout-btn">Logout</a></li>
             </ul>
         </aside>
 
@@ -76,14 +84,14 @@
                     
                     <h2>Publish Notice</h2>
                     
-                    <form>
+                    <form action="notices.php" method="POST">
                         <div class="input-group">
                             <label>Notice Title</label>
-                            <input type="text" placeholder="e.g. Holiday Announcement">
+                            <input type="text" name="title" placeholder="e.g. Holiday Announcement">
                         </div>
                         <div class="input-group">
                             <label>Select Audience</label>
-                            <select style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-family: 'Poppins', sans-serif;">
+                            <select name="audience" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-family: 'Poppins', sans-serif;">
                                 <option>All (Students & Teachers)</option>
                                 <option>Students Only</option>
                                 <option>Teachers Only</option>
@@ -91,9 +99,9 @@
                         </div>
                         <div class="input-group">
                             <label>Notice Content</label>
-                            <textarea style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-family: 'Poppins', sans-serif; min-height: 80px; resize: vertical;" placeholder="Type your announcement here..."></textarea>
+                            <textarea name="content" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-family: 'Poppins', sans-serif; min-height: 80px; resize: vertical;" placeholder="Type your announcement here..."></textarea>
                         </div>
-                        <button type="button" class="primary-button submit-btn">Publish</button>
+                        <button type="submit" class="primary-button submit-btn">Publish</button>
                     </form>
                 </div>
             </div>

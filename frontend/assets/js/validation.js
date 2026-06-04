@@ -16,7 +16,7 @@ if (password === "") {
 
 alert("Login successful!");
 
-window.location.href = "admin/dashboard.html";
+//window.location.href = "admin/dashboard.php";
 
 return true;
 }

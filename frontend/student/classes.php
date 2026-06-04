@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'student') {
+    header("Location: ../login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,11 +25,11 @@
         <aside class="sidebar" style="background-color: #1E293B;">
             <h2>Smart Student</h2>
             <ul>
-                <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="classes.html" class="active">My Classes</a></li>
-                <li><a href="timetable.html">Timetable</a></li>
-                <li><a href="notices.html">Notices</a></li>
-                <li><a href="../index.html" class="logout-btn">Logout</a></li>
+                <li><a href="dashboard.php">Dashboard</a></li>
+                <li><a href="classes.php" class="active">My Classes</a></li>
+                <li><a href="timetable.php">Timetable</a></li>
+                <li><a href="notices.php">Notices</a></li>
+                <li><a href="../index.php" class="logout-btn">Logout</a></li>
             </ul>
         </aside>
 
@@ -56,20 +64,6 @@
                             <td>2500.00</td>
                             <td><span class="status-badge live">Enrolled</span></td>
                         </tr>
-                        <tr>
-                            <td><strong>Science</strong></td>
-                            <td>Grade 10</td>
-                            <td>Mrs. Priyanthi Perera</td>
-                            <td>3000.00</td>
-                            <td><span class="status-badge live">Enrolled</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>English Language</strong></td>
-                            <td>Grade 10</td>
-                            <td>Mr. Rohan De Silva</td>
-                            <td>2000.00</td>
-                            <td><span class="status-badge live">Enrolled</span></td>
-                        </tr>
                     </tbody>
                 </table>
             </section>
@@ -80,10 +74,10 @@
                     
                     <h2>Enroll in New Class</h2>
                     
-                    <form>
+                    <form action="classes.php" method="POST">
                         <div class="input-group">
                             <label>Select Subject</label>
-                            <select>
+                            <select name="subject">
                                 <option>Mathematics</option>
                                 <option>Science</option>
                                 <option>English Language</option>
@@ -92,7 +86,7 @@
                         </div>
                         <div class="input-group">
                             <label>Available Teachers</label>
-                            <select>
+                            <select name="teacher">
                                 <option>Mr. Sunimal Silva</option>
                                 <option>Mrs. Priyanthi Perera</option>
                                 <option>Mr. Rohan De Silva</option>
@@ -100,9 +94,9 @@
                         </div>
                         <div class="input-group">
                             <label>Any Special Request (Optional)</label>
-                            <input type="text" placeholder="e.g. Prefer morning classes">
+                            <input type="text" name="request" placeholder="e.g. Prefer morning classes">
                         </div>
-                        <button type="button" class="primary-button submit-btn">Send Enrollment Request</button>
+                        <button type="submit" class="primary-button submit-btn">Send Enrollment Request</button>
                     </form>
                 </div>
             </div>

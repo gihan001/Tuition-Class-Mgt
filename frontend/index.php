@@ -14,16 +14,16 @@
     <nav>
         <h2>Smart Tuition</h2>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="register.html">Register</a></li>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="login.php">Login</a></li>
+            <li><a href="register.php">Register</a></li>
         </ul>
     </nav>
 
     <section id="hero">
         <h1>Welcome to Smart Tuition System</h1>
         <p>Manage your classes, students, and payments easily.</p>
-        <a href="login.html" class="primary-button">Get Started</a>
+        <a href="login.php" class="primary-button">Get Started</a>
     </section>
 
     <section id="features">

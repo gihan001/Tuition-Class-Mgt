@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'teacher') {
+    header("Location: ../login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,11 +24,11 @@
         <aside class="sidebar" style="background-color: #0F172A;">
             <h2>Smart Teacher</h2>
             <ul>
-                <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="students.html">My Students</a></li>
-                <li><a href="materials.html">Upload Materials</a></li>
-                <li><a href="classes.html" class="active">Assigned Classes</a></li>
-                <li><a href="../index.html" class="logout-btn">Logout</a></li>
+                <li><a href="dashboard.php">Dashboard</a></li>
+                <li><a href="students.php">My Students</a></li>
+                <li><a href="materials.php">Upload Materials</a></li>
+                <li><a href="classes.php" class="active">Assigned Classes</a></li>
+                <li><a href="../index.php" class="logout-btn">Logout</a></li>
             </ul>
         </aside>
 
@@ -53,20 +61,6 @@
                             <td>Monday, 04:00 PM</td>
                             <td>45</td>
                             <td><span class="status-badge live">Live Now</span></td>
-                        </tr>
-                        <tr>
-                            <td>CLS-003</td>
-                            <td><strong>Mathematics - Grade 11</strong></td>
-                            <td>Thursday, 03:30 PM</td>
-                            <td>38</td>
-                            <td><span class="status-badge upcoming">Upcoming</span></td>
-                        </tr>
-                        <tr>
-                            <td>CLS-005</td>
-                            <td><strong>Revision - O/L</strong></td>
-                            <td>Saturday, 08:00 AM</td>
-                            <td>60</td>
-                            <td><span class="status-badge upcoming">Upcoming</span></td>
                         </tr>
                     </tbody>
                 </table>
