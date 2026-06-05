@@ -29,7 +29,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_role']) || $_SESSION[
                 <li><a href="classes.php">My Classes</a></li>
                 <li><a href="timetable.php">Timetable</a></li>
                 <li><a href="notices.php">Notices</a></li>
-                <li><a href="../index.php" class="logout-btn">Logout</a></li>
+                <li><a href="../logout.php" class="logout-btn">Logout</a></li>
             </ul>
         </aside>
 

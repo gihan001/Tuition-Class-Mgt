@@ -1,0 +1,57 @@
+Smart Tuition Class Management System - Repository Tree
+
+.git/
+.vscode/
+  settings.json
+db.php
+README.md
+database/
+  schema.sql
+documentation/
+  Frontend Development Documentation.md
+frontend/
+  about.php
+  contact.php
+  index.php
+  login.php
+  register.php
+  admin/
+    classes.php
+    dashboard.php
+    notices.php
+    payments.php
+    students.php
+    teachers.php
+  assets/
+    css/
+      dashboard.css
+      forms.css
+      responsive.css
+      style.css
+    images/
+    js/
+      dashboard.js
+      script.js
+      table-search.js
+      validation.js
+  components/
+    footer.php
+    navbar.php
+    sidebar.php
+  student/
+    classes.php
+    dashboard.php
+    notices.php
+    timetable.php
+  teacher/
+    classes.php
+    dashboard.php
+    materials.php
+    students.php
+logs/
+  .gitkeep  (runtime: logs/login.log)
+scripts/
+  debug_user.php
+
+Notes:
+- File paths are workspace-relative. Use this file as a quick reference or download.

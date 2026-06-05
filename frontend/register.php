@@ -2,6 +2,8 @@
 // Database connection ගොනුව සම්බන්ධ කරගැනීම
 require '../db.php';
 
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
 // පරිශීලකයා Register බොත්තම එබූ විට පමණක් මෙය ක්‍රියාත්මක වේ
 if (isset($_POST['register_btn'])) {
     
@@ -13,18 +15,24 @@ if (isset($_POST['register_btn'])) {
     // ආරක්ෂාව සඳහා Password එක Hash කිරීම (සඟවා ගබඩා කිරීම)
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    // Database එකට දත්ත ඇතුළත් කිරීමේ SQL විධානය
-    $sql = "INSERT INTO users (full_name, email, password, role) VALUES ('$full_name', '$email', '$password', '$role')";
+    try {
+        // Database එකට දත්ත ඇතුළත් කිරීමේ Prepared Statement
+        $stmt = $conn->prepare("INSERT INTO users (full_name, email, password, role) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $full_name, $email, $password, $role);
+        $stmt->execute();
 
-    if ($conn->query($sql) === TRUE) {
         // සාර්ථක නම් පණිවිඩයක් පෙන්වා Login පිටුවට යැවීම
         echo "<script>
                 alert('Registration Successful! Please login.');
                 window.location.href = 'login.php';
               </script>";
-    } else {
-        // ගැටලුවක් ඇත්නම් එය පෙන්වීම (උදා: එකම Email එක දෙවරක් භාවිතා කිරීම)
-        echo "<script>alert('Error: Email already exists or something went wrong!');</script>";
+    } catch (mysqli_sql_exception $e) {
+        // එකම Email එක තිබේ නම් friendly message එකක් පෙන්වීම
+        if ((int) $e->getCode() === 1062) {
+            echo "<script>alert('Error: Email already exists. Please use a different email.');</script>";
+        } else {
+            echo "<script>alert('Error: Something went wrong while registering the user.');</script>";
+        }
     }
 }
 ?>
