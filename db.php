@@ -1,7 +1,7 @@
 <?php
-$host = "127.0.0.1:3307";
+$host = "127.0.0.1";
 $db_user = "root";       
-$db_pass = "root";           
+$db_pass = "1234";           
 $db_name = "smart_tuition"; 
 
 // Database එකට සම්බන්ධ වීම
