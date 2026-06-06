@@ -6,7 +6,7 @@
 
 .sidebar {
     width: 250px;
-    background-color: #1F2937; /* Dark Background */
+    background-color: #1F2937;
     color: #FFFFFF;
     padding: 20px;
     display: flex;
@@ -106,7 +106,7 @@
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     margin-top: 20px;
-    overflow-x: auto; /* ජංගම දුරකථන වලදී Table එක පැත්තට Scroll වීමට ලබා දීම */
+    overflow-x: auto;
 }
 
 .table-header {
@@ -118,7 +118,7 @@
 
 .data-table {
     width: 100%;
-    border-collapse: collapse; /* කොටු අතර ඇති හිස් ඉඩ ඉවත් කිරීම */
+    border-collapse: collapse;
 }
 
 .data-table th, .data-table td {
@@ -154,23 +154,23 @@
     background-color: #EF4444;
 }
 
+/* =========================================
+   වැඩිදියුණු කළ ආරක්ෂිත සහ නිවැරදි Modal ස්ටයිල්
+   ========================================= */
 .modal {
-    display: none; /* මුලින් මෙය සඟවා තබයි */
-    position: fixed; /* තිරයේ එකම තැනක රඳවා තබයි */
-    z-index: 2000; /* අනෙකුත් සියලුම දේවල් වලට වඩා උඩින් පෙන්වයි */
+    display: none; 
+    position: fixed; 
+    z-index: 9999; /* සැමදේටම වඩා උඩින් පෙන්වීමට */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* 50% ක් අඳුරු කළු පසුබිමක් */
-    justify-content: center;
-    align-items: center;
-    border: none;
-    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.6); /* 60% ක අඳුරු පසුබිම */
+    overflow: auto;
 }
 
 .modal.active {
-    display: flex; 
+    display: block; 
 }
 
 .modal-content {
@@ -178,15 +178,25 @@
     padding: 30px;
     border-radius: 8px;
     width: 90%;
-    max-width: 400px;
+    max-width: 450px;
     position: relative;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    margin: 8vh auto; /* ඉහළින් 8% ඉඩක් තබා තිරස් අතට හරියටම මැදට ගනී */
 }
 
 .modal-content h2 {
     color: #2563EB;
     margin-bottom: 20px;
     font-size: 1.5rem;
+}
+
+/* Modal එක ඇතුළේ ඇති බොත්තම් වල තදබදය නැති කර ඉඩ ලබා දීම */
+.modal-content .primary-button,
+.modal-content .submit-btn {
+    margin-top: 20px; 
+    width: 100%;      
+    padding: 12px;
+    display: block;
 }
 
 .close-btn {
@@ -200,11 +210,11 @@
 }
 
 .close-btn:hover {
-    color: #EF4444; /* මවුසය ගෙන ගිය විට රතු පැහැ වීම */
+    color: #EF4444;
 }
 
 /* =========================================
-   Status Badges (තත්ත්ව ලේබලයන්)
+   Status Badges
    ========================================= */
 .status-badge {
     padding: 5px 10px;
@@ -214,16 +224,14 @@
     display: inline-block;
 }
 
-/* දැනට පැවැත්වෙන පන්ති සඳහා කොළ පැහැය */
 .status-badge.live {
     background-color: #DCFCE7;
-    color: #22C55E; /* ලේඛනයේ Success වර්ණය */
+    color: #22C55E;
 }
 
-/* ඉදිරියට පැවැත්වෙන පන්ති සඳහා නිල් පැහැය */
 .status-badge.upcoming {
     background-color: #DBEAFE;
-    color: #2563EB; /* ලේඛනයේ Primary වර්ණය */
+    color: #2563EB;
 }
 
 /* =========================================
@@ -240,7 +248,6 @@
     transition: 0.3s;
 }
 
-/* සෙවුම් කොටුව ක්ලික් කළ විට නිල් පාට බෝඩරයක් වැටීමට */
 .search-bar:focus {
     border-color: #2563EB;
     box-shadow: 0 0 5px rgba(37, 99, 235, 0.2);
@@ -266,5 +273,41 @@
 
     .cards-container {
         flex-direction: column;
+    }
+}
+
+/* =========================================
+   Toast Notification Styles (Modern Alerts)
+   ========================================= */
+.toast-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    background-color: #22C55E; /* සාර්ථක වූ විට කොළ පැහැය */
+    color: #FFFFFF;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 10000; /* අනෙක් සියලු දේටම උඩින් පෙනීමට */
+    font-weight: bold;
+    font-size: 0.95rem;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    animation: slideInToast 0.5s ease forwards;
+}
+
+/* වැරදීමක් සිදු වූ විට රතු පැහැයෙන් පෙන්වීමට */
+.toast-notification.error {
+    background-color: #EF4444; 
+}
+
+/* දකුණු පස සිට ලිස්සා පැමිණීමේ ලස්සන Animation එක */
+@keyframes slideInToast {
+    from {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
     }
 }
