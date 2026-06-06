@@ -1,9 +1,11 @@
 -- Smart Tuition Class Management System
--- Updated Schema (Reflects all new changes: Subject, Grade, Schedule, Contact, and Notices)
+-- Updated Master Schema (Finalized)
 
 SET FOREIGN_KEY_CHECKS = 0;
 
--- Drop existing tables to avoid conflicts during import
+-- Drop tables in correct order to avoid constraint errors
+DROP TABLE IF EXISTS tests;
+DROP TABLE IF EXISTS enrollments;
 DROP TABLE IF EXISTS notices;
 DROP TABLE IF EXISTS payments;
 DROP TABLE IF EXISTS classes;
@@ -13,7 +15,7 @@ DROP TABLE IF EXISTS users;
 
 SET FOREIGN_KEY_CHECKS = 1;
 
--- 1. USERS TABLE (Handles Authentication & Roles)
+-- 1. USERS TABLE
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     full_name VARCHAR(100) NOT NULL,
@@ -23,7 +25,7 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- 2. STUDENTS TABLE (Stores Student Specific Details)
+-- 2. STUDENTS TABLE
 CREATE TABLE students (
     student_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
@@ -36,7 +38,7 @@ CREATE TABLE students (
         ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- 3. TEACHERS TABLE (Stores Teacher Specific Details)
+-- 3. TEACHERS TABLE
 CREATE TABLE teachers (
     teacher_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
@@ -50,7 +52,7 @@ CREATE TABLE teachers (
         ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- 4. CLASSES TABLE (Stores Class Schedules and Assignments)
+-- 4. CLASSES TABLE (Added class_fee)
 CREATE TABLE classes (
     class_id INT AUTO_INCREMENT PRIMARY KEY,
     subject VARCHAR(100) NOT NULL,
@@ -58,6 +60,7 @@ CREATE TABLE classes (
     teacher_id INT NOT NULL,
     class_day VARCHAR(50) NOT NULL,
     class_time VARCHAR(50) NOT NULL,
+    class_fee DECIMAL(10,2) NOT NULL DEFAULT 0.00,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_classes_teacher
         FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id)
@@ -65,7 +68,29 @@ CREATE TABLE classes (
         ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- 5. PAYMENTS TABLE (Stores Student Fee Payments)
+-- 5. ENROLLMENTS TABLE (New: Tracks students in classes)
+CREATE TABLE enrollments (
+    enrollment_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    class_id INT NOT NULL,
+    status VARCHAR(20) DEFAULT 'Enrolled',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_enroll_student FOREIGN KEY (student_id) REFERENCES students(student_id) ON DELETE CASCADE,
+    CONSTRAINT fk_enroll_class FOREIGN KEY (class_id) REFERENCES classes(class_id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- 6. TESTS TABLE (New: Tracks upcoming tests)
+CREATE TABLE tests (
+    test_id INT AUTO_INCREMENT PRIMARY KEY,
+    class_id INT NOT NULL,
+    test_title VARCHAR(100) NOT NULL,
+    description TEXT,
+    test_date DATE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_tests_class FOREIGN KEY (class_id) REFERENCES classes(class_id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- 7. PAYMENTS TABLE
 CREATE TABLE payments (
     payment_id INT AUTO_INCREMENT PRIMARY KEY,
     student_id INT NOT NULL,
@@ -79,7 +104,7 @@ CREATE TABLE payments (
         ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- 6. NOTICES TABLE (Stores System Announcements)
+-- 8. NOTICES TABLE
 CREATE TABLE notices (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
