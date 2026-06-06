@@ -1,20 +1,12 @@
-function validateLogin(event){
-    // Only prevent submission when validation fails
-    let email = document.getElementById('email').value;
+function validateLogin(event) {
+    let email = document.getElementById('email').value.trim();
     let password = document.getElementById('password').value;
 
-    if (email === "") {
-        alert("Email is required.");
+    // alert() වෙනුවට ෆෝම් එක සබ්මිට් වීම පමණක් නිහඬව නතර කරයි (HTML5 Required එක ක්‍රියාත්මක වීමට ඉඩ හරියි)
+    if (email === "" || password === "") {
         event.preventDefault();
         return false;
     }
 
-    if (password === "") {
-        alert("Password is required.");
-        event.preventDefault();
-        return false;
-    }
-
-    // validation passed — allow the form to submit
     return true;
 }

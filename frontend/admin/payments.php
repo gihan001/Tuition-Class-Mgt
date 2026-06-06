@@ -30,6 +30,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_role']) || $_SESSION[
                 <li><a href="teachers.php">Teachers</a></li>
                 <li><a href="classes.php">Classes</a></li>
                 <li><a href="payments.php" class="active">Payments</a></li>
+                <li><a href="notices.php">Notices</a></li>
                 <li><a href="../index.php" class="logout-btn">Logout</a></li>
             </ul>
         </aside>

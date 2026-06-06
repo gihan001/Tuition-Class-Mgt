@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     padding: 50px 20px;
-    flex:1;
+    flex: 1;
 }
 
 .login-form {
@@ -22,7 +22,13 @@
     text-align: center;
 }
 
-input-group label{
+/* එක් එක් Input එකක් අතර ලස්සන පරතරයක් තැබීම */
+.input-group {
+    margin-bottom: 15px;
+}
+
+/* නිවැරදි කරන ලද Class Selector එක (. එකතු කරන ලදි) */
+.input-group label {
     display: block;
     margin-bottom: 5px;
     color: #1F2937;
@@ -61,7 +67,7 @@ input-group label{
     width: 100%;
     margin-top: 10px;
     border: none;
-    cursor: pointer; /*show the hand gesture when hovering over the button*/
+    cursor: pointer;
 }
 
 .submit-btn {
@@ -81,5 +87,5 @@ input-group label{
 }
 
 .forgot-password:hover {
-    text-decoration: underline; /* Draw an underline when hovering over the "Forgot Password?" link */
+    text-decoration: underline;
 }

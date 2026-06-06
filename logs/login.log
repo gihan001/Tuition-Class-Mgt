@@ -6,3 +6,4 @@
 2026-06-04T17:34:25+02:00 LOGIN_SUCCESS: email=student@gmail.com id=3 role=student
 2026-06-04T17:34:53+02:00 LOGIN_SUCCESS: email=admin@gmail.com id=1 role=admin
 2026-06-04T17:39:17+02:00 LOGIN_SUCCESS: email=student1@gmail.com id=4 role=student
+2026-06-05T17:55:30+02:00 LOGIN_SUCCESS: email=admin@xmail.com id=2 role=admin

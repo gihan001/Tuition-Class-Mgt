@@ -1,10 +1,31 @@
 <?php
 session_start();
 
+// Student kiyala check kirima
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'student') {
     header("Location: ../login.php");
     exit();
 }
+
+include '../../db.php';
+
+// Log wela inna student ge ID eka ganna
+$user_id = $_SESSION['user_id'];
+$stmt = $conn->prepare("SELECT student_id FROM students WHERE user_id = ?");
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$student_data = $stmt->get_result()->fetch_assoc();
+$student_id = $student_data['student_id'] ?? 0;
+
+// Enroll wela inna classes wala timetable eka ganna query eka
+$timetable_query = "SELECT c.class_day, c.class_time, c.subject, c.grade, t.name AS teacher_name 
+                    FROM enrollments e
+                    INNER JOIN classes c ON e.class_id = c.class_id
+                    INNER JOIN teachers t ON c.teacher_id = t.teacher_id
+                    WHERE e.student_id = $student_id
+                    ORDER BY FIELD(c.class_day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'), c.class_time ASC";
+
+$res_timetable = mysqli_query($conn, $timetable_query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,8 +48,9 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_role']) || $_SESSION[
                 <li><a href="dashboard.php">Dashboard</a></li>
                 <li><a href="classes.php">My Classes</a></li>
                 <li><a href="timetable.php" class="active">Timetable</a></li>
+                <li><a href="upcoming_tests.php">Upcoming Tests</a></li>
                 <li><a href="notices.php">Notices</a></li>
-                <li><a href="../index.php" class="logout-btn">Logout</a></li>
+                <li><a href="../logout.php" class="logout-btn">Logout</a></li>
             </ul>
         </aside>
 
@@ -49,17 +71,25 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_role']) || $_SESSION[
                         <tr>
                             <th>Day</th>
                             <th>Time</th>
-                            <th>Subject</th>
-                            <th>Teacher</th>
+                            <th>Subject</th> <th>Grade</th>   <th>Teacher</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Monday</td>
-                            <td>04:00 PM</td>
-                            <td>Mathematics</td>
-                            <td>Mr. Sunimal Silva</td>
-                        </tr>
+                        <?php if (mysqli_num_rows($res_timetable) === 0): ?>
+                            <tr>
+                                <td colspan="5" style="text-align:center;">No scheduled classes found. Enroll in a class first.</td>
+                            </tr>
+                        <?php else: ?>
+                            <?php while ($row = mysqli_fetch_assoc($res_timetable)): ?>
+                                <tr>
+                                    <td><strong><?php echo htmlspecialchars($row['class_day']); ?></strong></td>
+                                    <td><?php echo htmlspecialchars($row['class_time']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['subject']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['grade']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['teacher_name']); ?></td>
+                                </tr>
+                            <?php endwhile; ?>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </section>

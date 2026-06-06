@@ -26,8 +26,9 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_role']) || $_SESSION[
             <ul>
                 <li><a href="dashboard.php">Dashboard</a></li>
                 <li><a href="students.php">My Students</a></li>
-                <li><a href="materials.php">Upload Materials</a></li>
                 <li><a href="classes.php" class="active">Assigned Classes</a></li>
+                <li><a href="manage_tests.php">Upcoming Tests</a></li>
+                <li><a href="materials.php">Upload Materials</a></li>
                 <li><a href="../index.php" class="logout-btn">Logout</a></li>
             </ul>
         </aside>

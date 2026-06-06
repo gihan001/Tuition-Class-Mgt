@@ -41,13 +41,13 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #2563EB; /*Color is changed pointed by cursor*/
+    color: #2563EB;
 }
 
 #hero {
     text-align: center;
     padding: 100px 20px;
-    background-color: #2563EB; /* Primary Color */
+    background-color: #2563EB;
     color: #FFFFFF;
 }
 
@@ -57,7 +57,7 @@ nav ul li a:hover {
 }
 
 .primary-button {
-    background-color: #22C55E; /* Success Color */
+    background-color: #22C55E;
     color: #FFFFFF;
     padding: 10px 25px;
     text-decoration: none;
@@ -65,10 +65,12 @@ nav ul li a:hover {
     font-weight: bold;
     display: inline-block;
     border: none;
+    text-align: center;
+    transition: background-color 0.3s;
 }
 
 .primary-button:hover {
-    background-color: #16A34A; /* Darker Success Color */
+    background-color: #16A34A;
 }
 
 section {

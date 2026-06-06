@@ -8,27 +8,30 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_role']) || $_SESSION[
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload Materials - Smart Tuition</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
     <link rel="stylesheet" href="../assets/css/forms.css">
 </head>
+
 <body>
 
     <div class="dashboard-container">
-        
+
         <aside class="sidebar" style="background-color: #0F172A;">
             <h2>Smart Teacher</h2>
             <ul>
                 <li><a href="dashboard.php">Dashboard</a></li>
                 <li><a href="students.php">My Students</a></li>
-                <li><a href="materials.php" class="active">Upload Materials</a></li>
                 <li><a href="classes.php">Assigned Classes</a></li>
+                <li><a href="manage_tests.php">Upcoming Tests</a></li>
+                <li><a href="materials.php" class="active">Upload Materials</a></li>
                 <li><a href="../index.php" class="logout-btn">Logout</a></li>
             </ul>
         </aside>
@@ -44,7 +47,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_role']) || $_SESSION[
                 <div class="table-header">
                     <h2>Uploaded Materials</h2>
                 </div>
-                
+
                 <table class="data-table">
                     <thead>
                         <tr>
@@ -92,4 +95,5 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_role']) || $_SESSION[
 
     <script src="../assets/js/dashboard.js"></script>
 </body>
+
 </html>
