@@ -156,7 +156,7 @@ while ($t_row = mysqli_fetch_assoc($res_teachers)) {
                 <li><a href="classes.php" class="active">Classes</a></li>
                 <li><a href="payments.php">Payments</a></li>
                 <li><a href="notices.php">Notices</a></li>
-                <li><a href="../logout.php" class="logout-btn">Logout</a></li>
+                <li><a href="../index.php" class="logout-btn">Logout</a></li>
             </ul>
         </aside>
 
