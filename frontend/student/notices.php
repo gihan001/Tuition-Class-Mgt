@@ -42,7 +42,7 @@ $res_notices = mysqli_query($conn, $sql_fetch);
                 <li><a href="timetable.php">Timetable</a></li>
                 <li><a href="upcoming_tests.php">Upcoming Tests</a></li>
                 <li><a href="notices.php" class="active">Notices</a></li>
-                <li><a href="../logout.php" class="logout-btn">Logout</a></li>
+                <li><a href="../index.php" class="logout-btn">Logout</a></li>
             </ul>
         </aside>
 

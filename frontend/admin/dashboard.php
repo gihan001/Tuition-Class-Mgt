@@ -54,7 +54,7 @@ $total_classes = ($res_classes) ? mysqli_fetch_assoc($res_classes)['total_classe
                 <li><a href="classes.php">Classes</a></li>
                 <li><a href="payments.php">Payments</a></li>
                 <li><a href="notices.php">Notices</a></li>
-                <li><a href="../logout.php" class="logout-btn">Logout</a></li>
+                <li><a href="../index.php" class="logout-btn">Logout</a></li>
             </ul>
         </aside>
 

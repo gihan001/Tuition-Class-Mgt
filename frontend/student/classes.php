@@ -102,7 +102,7 @@ $my_classes = mysqli_query($conn, $my_classes_query);
                 <li><a href="timetable.php">Timetable</a></li>
                 <li><a href="upcoming_tests.php">Upcoming Tests</a></li>
                 <li><a href="notices.php">Notices</a></li>
-                <li><a href="../logout.php" class="logout-btn">Logout</a></li>
+                <li><a href="../index.php" class="logout-btn">Logout</a></li>
             </ul>
         </aside>
 

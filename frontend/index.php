@@ -23,7 +23,7 @@
     <section id="hero">
         <h1>Welcome to Smart Tuition System</h1>
         <p>Manage your classes, students, and payments easily.</p>
-        <a href="login.php" class="primary-button">Get Started</a>
+        <a href="register.php" class="primary-button">Get Started</a>
     </section>
 
     <section id="features">
