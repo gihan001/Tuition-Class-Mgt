@@ -47,7 +47,9 @@ nav ul li a:hover {
 #hero {
     text-align: center;
     padding: 100px 20px;
-    background-color: #2563EB;
+    background:
+        linear-gradient(rgba(37, 99, 235, 0.45), rgba(37, 99, 235, 0.45)),
+        url("../images/hero-bg.png") center/cover no-repeat;
     color: #FFFFFF;
 }
 

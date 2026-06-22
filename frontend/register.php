@@ -84,7 +84,7 @@ if (isset($_POST['register_btn'])) {
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/forms.css">
 </head>
-<body>
+<body class="auth-page">
 
     <nav>
         <h2>Smart Tuition</h2>
@@ -141,6 +141,8 @@ if (isset($_POST['register_btn'])) {
             </div>
 
             <button type="submit" name="register_btn" class="primary-button">Register</button>
+            
+            <p class="auth-redirect">Already have an account? <a href="login.php">Login here</a></p>
         </form>
     </section>
 

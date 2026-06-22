@@ -76,7 +76,7 @@ if (isset($_POST['login_btn'])) {
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/forms.css">
 </head>
-<body>
+<body class="auth-page">
 
     <nav>
         <h2>Smart Tuition</h2>
